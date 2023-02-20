@@ -69,7 +69,7 @@ def save_data(df, database_filename):
 
     # create a database including prcessed dataframe
     engine = create_engine('sqlite:///{}'.format(database_filename))
-    df.to_sql('Response', engine, index=False)
+    df.to_sql('Response', engine, index=False,if_exists='replace')
     pass
 
 
