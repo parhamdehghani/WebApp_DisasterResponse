@@ -52,11 +52,11 @@ data:
 - disaster_categories.csv # data to process
 - disaster_messages.csv # data to process
 - process_data.py # code to run the whole ETL pipeline upon the input data
-- InsertDatabaseName.db # database to save clean data to
+- DataBase_name.db # database to save clean data to
 
 models:
 
 - train_classifier.py # code to run the training job based on the chosen specifications
-- classifier.pkl # saved model
+- model_name.pkl # saved model
 
 README.md
