@@ -41,9 +41,9 @@ app:
 
 - template # including html files of the designed webpages
 
-	-- master.html # main page of web app including insights about the used data
+	- master.html # main page of web app including insights about the used data
 
-	-- go.html # classification result page of web app
+	- go.html # classification result page of web app
 
 - run.py # Flask file that runs app
 
