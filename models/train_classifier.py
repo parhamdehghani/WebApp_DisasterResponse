@@ -107,7 +107,7 @@ def build_model():
 def evaluate_model(model, X_test, Y_test, category_names):
     '''
     Evaluates the trained model against the test data including accuracy
-    of the model and precision and recall for each label
+    of the model and f1 score, precision, and recall for each label
     
     Input:
     model -> generated model in the last step
@@ -117,7 +117,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
     
     Output:
     no return - prints the accuracy of the model against test data including
-    precision and recall for each label of the test data
+    f1 score, precision, and recall for each label of the test data
     
     '''
     # calculating the predictions to test set based on the trained model

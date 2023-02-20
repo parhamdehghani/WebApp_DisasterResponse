@@ -31,6 +31,22 @@ def load_data(messages_filepath, categories_filepath):
     categories.columns = category_colnames
     for column in categories.columns:
         categories[column] = categories[column].apply(lambda x: int(x.split('-')[1]))
+    
+    # check for non-binary label values and drop the relevant rows from data
+    indices=[]
+    for i in range(categories.shape[0]):
+    	condition = True
+    	for label in list(categories.iloc[i,:]):
+        	if (label!=0) & (label!=1):
+            		condition = False
+    	if condition == False:
+        	indices.append(i)
+    categories.drop(indices,axis=0,inplace=True)
+    categories.reset_index()
+    df.drop(indices,axis=0,inplace=True)
+    df.reset_index()
+
+    # drop categories column from df
     df.drop(['categories'],axis=1,inplace=True)
     # finalize dataframe based on new columns for response categories
     df = pd.concat([df,categories],axis=1)
