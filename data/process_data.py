@@ -5,6 +5,20 @@ import numpy as np
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    Loads data from input files and merges them to result in
+    a final dataframe for further process
+
+    Input:
+    
+    messages_filepath -> path to messages.csv
+    categories_filepath -> path to categories.csv
+
+    Output:
+    
+    df -> final dataframe including both messages and categories data
+
+    '''
     # load datasets
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
@@ -24,12 +38,35 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    '''
+    Cleans data from any duplicates in two columns message and original
+    
+    Input:
+    df -> generated dataframe in the previous step
+    
+    Output:
+    df -> cleaned dataframe
+    
+    '''
+    
     # drop duplicates based on 'message' and 'original' columns
     df.drop_duplicates(subset=['message','original'],inplace=True)
     return df
 
 
 def save_data(df, database_filename):
+    '''
+    Saves dataframe to a database
+    
+    Input:
+    df -> generated dataframe in the previous step
+    database_filename -> arbitrary name for the saved database
+    
+    Output:
+    no output - function saves a database including Response table
+    
+    '''
+
     # create a database including prcessed dataframe
     engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('Response', engine, index=False)

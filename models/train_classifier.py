@@ -22,6 +22,20 @@ import pickle
 
 
 def load_data(database_filepath):
+    '''
+    Loads the saved database and generate inputs and labels for 
+    model training step
+    
+    Input:
+    database_filepath -> path to the saved database
+    
+    Output:
+    X -> input data for model building
+    Y -> labels to be used for model building
+    cat_names -> column names of the labels used for model building
+    
+    '''
+    
     # load data from database
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table('Response',engine)
@@ -32,6 +46,19 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    Processes the input data by the text processing tools, then
+    prepares input data for being transformed to input features
+    for model building 
+    
+    Input:
+    text -> a single document to be proceessed
+    
+    Output:
+    clean_tokens -> processed document ready for feature transformation
+    
+    '''
+    
     # removing punctuation
     text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     # split into words and remove stop words
@@ -49,6 +76,17 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    Builds the pipeline including text processing, feature transformation
+    and grid search hyper-parameters for the used model
+    
+    Input:
+    no input
+    
+    Output:
+    model -> returns the whole pipeline ready for the training step
+    
+    '''
     # instantiating the multi-class predictor for the last step of pipeline
     mlpc = MultiOutputClassifier(estimator=RandomForestClassifier())
     # define the pipeline for ML workflow
@@ -67,6 +105,21 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    Evaluates the trained model against the test data including accuracy
+    of the model and precision and recall for each label
+    
+    Input:
+    model -> generated model in the last step
+    X_test -> test input data
+    Y_test -> test date labels
+    category_names -> column names of the labels
+    
+    Output:
+    no return - prints the accuracy of the model against test data including
+    precision and recall for each label of the test data
+    
+    '''
     # calculating the predictions to test set based on the trained model
     y_pred = model.predict(X_test)
     # calculating the accuracy for all the categories
@@ -80,6 +133,19 @@ def evaluate_model(model, X_test, Y_test, category_names):
         print('\n')
     
 def save_model(model, model_filepath):
+    '''
+    Saves a pickel file including the trained model with best set of 
+    chosen hyper-parameters
+    
+    Input:
+    model -> trained model
+    model_filepath -> path to the pickle file to be saved
+    
+    Output:
+    no return - saves the pickle file of the model referring to the 
+    specified path to the model
+    
+    '''
     pickle.dump(model, open(model_filepath, 'wb'))
 
 
