@@ -38,16 +38,22 @@ hyperparameters o the chosen algorithm.
 
 ### File structure:
 app
-| - template # including html files of the designed webpages
-| |- master.html # main page of web app including insights about the used data
-| |- go.html # classification result page of web app
-|- run.py # Flask file that runs app
+
+- template # including html files of the designed webpages
+-- master.html # main page of web app including insights about the used data
+-- go.html # classification result page of web app
+- run.py # Flask file that runs app
+
 data
-|- disaster_categories.csv # data to process
-|- disaster_messages.csv # data to process
-|- process_data.py # code to run the whole ETL pipeline upon the input data
-|- InsertDatabaseName.db # database to save clean data to
+
+- disaster_categories.csv # data to process
+- disaster_messages.csv # data to process
+- process_data.py # code to run the whole ETL pipeline upon the input data
+- InsertDatabaseName.db # database to save clean data to
+
 models
-|- train_classifier.py # code to run the training job based on the chosen specifications
-|- classifier.pkl # saved model
+
+- train_classifier.py # code to run the training job based on the chosen specifications
+- classifier.pkl # saved model
+
 README.md
