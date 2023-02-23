@@ -52,7 +52,6 @@ def index():
     labels = df.iloc[:,4:].mean().index
     
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         {
             'data': [
