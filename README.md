@@ -8,9 +8,9 @@ starting from text processing then transforming into features (the whole ETL pip
 based on Random Forest classification algorithm and searching over chosen hyperparameters of the model and 
 then deployment on the fron-end using Flask. Fron-end is a web application in which the message in the event 
 of a disaster is elicited, and then classification will be done based on the trained model at the backend of 
-the webapp. 
+the web app. 
 
-In this incarnaton, this project can be beneficial to be expanded for the commercial use in the event 
+In this incarnation, this project can be beneficial to be expanded for the commercial use in the event 
 of a disaster as it can help inform the regarding sectors as fast as possible and then add to the performance to
 the ongoing endeavors for resolving issues. By classifying the upcoming messages over the social media, the relevant
 officials can be better and faster informed about the problems and the level by which people are being impacted. 
@@ -19,7 +19,7 @@ officials can be better and faster informed about the problems and the level by 
 These are the simple instructions how to set up and run the web app. This web app can be simply deployed on REST endpoints 
 of AWS or any other cloud-based services as the extension. The input data can also be provided by the relevant APIs to add
 to the precision of the classifier as the trend within data can change over time that can impact the working ranges for the 
-hyperparameters o the chosen algorithm.
+hyperparameters of the chosen algorithm.
  
 
 ### Instructions:
